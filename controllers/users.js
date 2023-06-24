@@ -34,9 +34,35 @@ exports.createUser = asycn (req, res) => {
 
 //acts as middleware to check if user is authoried to do somehting
 
-exports.loginUser = async (req. res) => {
+exports.loginUser = async (req, res) => {
     try {
         const user = await user.findOne({ email: req.body.email})
+        if(!user || await bcrypt.compare(req.body.password, user.password)) {
+            throw new Error{'invalid login credentials'}
+        } else {
+            const token = await user.generateAuthToken()
+            res.json({ user, token })
+        }  
+    } catch (error) {
+        res.status(400).json({ message: error.message})
+        
+    }
+}
+
+exports.updateUser = async (req, res) => {
+    try {
+        const update = Object.keys(req.body)
+        updates.forEach(update => req.user[update] = req.body[update])
+        await req.user()
+        res.json(user)
+    } catch (error) {
+        res.status(400).json({ message: error.message})
+        
+    }
+}
+
+exports.deleteUser = async (req, res) =>{
+    try {
         
     } catch (error) {
         
