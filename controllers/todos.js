@@ -24,7 +24,17 @@ exports.show = async function (req, res){
 
 exports.indexComplete = async function(req, res) {
     try {
-        const todo = await Todo.find({ completed: true })
+        const todo = await Todo.find({ completed: true, user: req.user._id})
+        res.json(todo)
+    } catch (error) {
+        res.status(400).json({ message: error.message})
+        
+    }
+}
+
+exports.indexNotComplete = async function(req, res) {
+    try {
+        const todo = await Todo.find({ completed: false, user: req.user._id  })
         res.json(todo)
     } catch (error) {
         res.status(400).json({ message: error.message})
