@@ -41,3 +41,24 @@ exports.indexNotComplete = async function(req, res) {
         
     }
 }
+
+
+exports.update = async function(req, res) {
+    try {
+        const todo = await Todo.findOneAndUpdate({ _id: req.params.id  }, req.body, { new: true})
+        res.json(todo)
+    } catch (error) {
+        res.status(400).json({ message: error.message})
+        
+    }
+}
+
+exports.delete = async function(req, res) {
+    try {
+        const todo = await Todo.findOneAndDelete({ _id: req.params.id  })
+        res.sendStatus(204)
+    } catch (error) {
+        res.status(400).json({ message: error.message})
+        
+    }
+}
