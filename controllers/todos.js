@@ -1,9 +1,14 @@
 const Todo = require('../models/todo')
+const User = require('../models/user')
 
 exports.create = async function (req, res) {
     try {
         req.body.user = req.body._id
         const todo = await Todo.create(req.body)
+        req.user.todo?
+        req.user.todos.addToSet({ _id: todo._id});
+        req.user.todos = [{_id: todo._id}]
+        req.user.save()
         res.json(todo)
         
     } catch (error) {

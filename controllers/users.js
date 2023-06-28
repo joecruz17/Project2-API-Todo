@@ -63,8 +63,9 @@ exports.updateUser = async (req, res) => {
 
 exports.deleteUser = async (req, res) =>{
     try {
-        
+        await req.user.deleteOne()
+        res.sendStatus('204')
     } catch (error) {
-        
+        res.status(400).json({ message: error.message})
     }
 }
