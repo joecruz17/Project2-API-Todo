@@ -20,7 +20,7 @@ exports.auth = async = async (req, res, next ) => {
     }
 }
 
-exports.createUser = asycn (req, res) => {
+exports.createUser = async (req, res) => {
     try {
         const user = new User(req.body)
         await user.save()
@@ -38,7 +38,7 @@ exports.loginUser = async (req, res) => {
     try {
         const user = await user.findOne({ email: req.body.email})
         if(!user || await bcrypt.compare(req.body.password, user.password)) {
-            throw new Error{'invalid login credentials'}
+            throw new Error ('invalid login credentials')
         } else {
             const token = await user.generateAuthToken()
             res.json({ user, token })
