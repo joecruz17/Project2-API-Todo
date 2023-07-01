@@ -6,9 +6,9 @@ const jwt = require('jsonwebtoken')
 
 exports.auth = async = async (req, res, next ) => {
     try {
-        const token = req.header('Authorization').replace('Bearer', '')
+        const token = req.header('Authorization').replace('Bearer ', '')
         const data = jwt.verify(token, process.env.SECRET)
-        const user = await User.findOne({ _id: data._idn}) 
+        const user = await User.findOne({ _id: data._id}) 
         if(!user){
             throw new Error('bad credentials')
         }
@@ -25,6 +25,8 @@ exports.createUser = async (req, res) => {
         const user = new User(req.body)
         await user.save()
         const token = await user.generateAuthToken()
+        req.user = user
+        req.token = token
         res.json({ user, token })
     } catch (error) {
         res.status(400).json({ message: error.message})
@@ -36,10 +38,13 @@ exports.createUser = async (req, res) => {
 
 exports.loginUser = async (req, res) => {
     try {
-        const user = await user.findOne({ email: req.body.email})
-        if(!user || await bcrypt.compare(req.body.password, user.password)) {
+        console.log(req.body)
+        const user = await User.findOne({ email: req.body.email}) //capital User is built in mongoose model, always use for findOne, deleteOne, updateOne, etc...
+        console.log(user)
+        if(!user || !await bcrypt.compare(req.body.password, user.password)) {
             throw new Error ('invalid login credentials')
         } else {
+            await user.save()
             const token = await user.generateAuthToken()
             res.json({ user, token })
         }  
@@ -51,9 +56,10 @@ exports.loginUser = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
     try {
-        const update = Object.keys(req.body)
-        updates.forEach(update => req.user[update] = req.body[update])
-        await req.user()
+        const updates = Object.keys(req.body)
+        const user = await User.findOne({ _id: req.params.id })
+        updates.forEach(update => user[update] = req.body[update])
+        await user.save()
         res.json(user)
     } catch (error) {
         res.status(400).json({ message: error.message})
@@ -69,3 +75,4 @@ exports.deleteUser = async (req, res) =>{
         res.status(400).json({ message: error.message})
     }
 }
+

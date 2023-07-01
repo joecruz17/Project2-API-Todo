@@ -6,7 +6,7 @@ exports.create = async function (req, res) {
         req.body.user = req.body._id
         const todo = await Todo.create(req.body)
         req.user.todo?
-        req.user.todos.addToSet({ _id: todo._id});
+        req.user.todos.addToSet({ _id: todo._id}):
         req.user.todos = [{_id: todo._id}]
         req.user.save()
         res.json(todo)
@@ -29,8 +29,10 @@ exports.show = async function (req, res){
 
 exports.indexComplete = async function(req, res) {
     try {
-        const todo = await Todo.find({ completed: true, user: req.user._id})
+       
+        const todo = await Todo.find({ completed: true})
         res.json(todo)
+        console.log(todo)
     } catch (error) {
         res.status(400).json({ message: error.message})
         
@@ -39,7 +41,7 @@ exports.indexComplete = async function(req, res) {
 
 exports.indexNotComplete = async function(req, res) {
     try {
-        const todo = await Todo.find({ completed: false, user: req.user._id  })
+        const todo = await Todo.find({ completed: false })
         res.json(todo)
     } catch (error) {
         res.status(400).json({ message: error.message})

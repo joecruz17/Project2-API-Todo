@@ -12,15 +12,17 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.pre('save', async function(next){
-    this.isModified('modified')? 
-    this.password = await bcrypt.hash(this.pasword, 8):
-    null;
+    if (this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 8)
+    }
     next()
 })
 
 userSchema.methods.generateAuthToken = async function(){
     const token = jwt.sign({ _id: this._id }, process.env.SECRET)
+    return token
 }
+
 
 const User = mongoose.model('User', userSchema)
 
