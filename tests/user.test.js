@@ -30,38 +30,38 @@ describe('Test the users endpoints', () => {
     expect(response.body.user.email).toEqual('john.doe@example.com')
     expect(response.body).toHaveProperty('token')
   })
-
+})
   test('It should login a user', async () => {
-    const user = new User({ name: 'John Doe', email: 'john.doe@example.com', password: 'password123' })
+    const user = new User({ name: 'John Doe', email: 'john.doe1@example.com', password: 'password123' })
     await user.save()
 
     const response = await request(app)
       .post('/users/login')
-      .send({ email: 'john.doe@example.com', password: 'password123' })
+      .send({ email: 'john.doe1@example.com', password: 'password123' })
     
     expect(response.statusCode).toBe(200)
     expect(response.body.user.name).toEqual('John Doe')
-    expect(response.body.user.email).toEqual('john.doe@example.com')
+    expect(response.body.user.email).toEqual('john.doe1@example.com')
     expect(response.body).toHaveProperty('token')
   })
 
   test('It should update a user', async () => {
-    const user = new User({ name: 'John Doe', email: 'john.doe@example.com', password: 'password123' })
+    const user = new User({ name: 'John Doe', email: 'john.doe22@example.com', password: 'password123' })
     await user.save()
     const token = await user.generateAuthToken()
 
     const response = await request(app)
       .put(`/users/${user._id}`)
       .set('Authorization', `Bearer ${token}`)
-      .send({ name: 'Jane Doe', email: 'jane.doe@example.com' })
+      .send({ name: 'Jane Doe', email: 'jane.doe22@example.com' })
     
     expect(response.statusCode).toBe(200)
     expect(response.body.name).toEqual('Jane Doe')
-    expect(response.body.email).toEqual('jane.doe@example.com')
+    expect(response.body.email).toEqual('jane.doe22@example.com')
   })
 
   test('It should delete a user', async () => {
-    const user = new User({ name: 'John Doe', email: 'john.doe@example.com', password: 'password123' })
+    const user = new User({ name: 'John Doe', email: 'john.doe3333@example.com', password: 'password123' })
     await user.save()
     const token = await user.generateAuthToken()
 
@@ -72,4 +72,3 @@ describe('Test the users endpoints', () => {
     expect(response.statusCode).toBe(200)
     expect(response.body.message).toEqual('User deleted')
   })
-})

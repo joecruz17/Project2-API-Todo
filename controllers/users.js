@@ -69,10 +69,11 @@ exports.updateUser = async (req, res) => {
 
 exports.deleteUser = async (req, res) =>{
     try {
-        await req.user.deleteOne()
-        res.sendStatus('204')
+        await User.findOneAndDelete({_id: req.params.id})
+        res.json({message:"User deleted"})
     } catch (error) {
         res.status(400).json({ message: error.message})
     }
 }
 
+// await req.user.deleteOne()
