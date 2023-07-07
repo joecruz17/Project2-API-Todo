@@ -47,9 +47,29 @@ Enter your information in this format
 
 Create a User POST http://localhost:6000/users/
 
+login User 'POST' http://localhost:6000/users/login
+
+Update a User PUT http://localhost:6000/users/:id (which is the id of the user you are updating)
+
+Delete a User DELETE http://localhost:6000/users/:id (which is the id of the user you are deleting)
 
 
-login 'POST' http://localhost:6000/users/login
 
+router.delete('/:id', userController.auth, todoCtrl.delete)
+router.put('/:id', userController.auth, todoCtrl.update)
+router.post('/', userController.auth, todoCtrl.create)
+router.get('/:id', userController.auth, todoCtrl.show)
+
+
+Get list of incomplete Todos GET http://localhost:6000/todos/incomplete
+
+Get list of complete Todos GET http://localhost:6000/todos/completed
 
 Create a Todo'POST' http://localhost:6000/todos
+
+Delete a Todo DELETE http://localhost:6000/todos/:id (which is the id of the user you are deleting)
+
+Update a Todo PUT http://localhost:6000/todos/:id (which is the id of the user you are updating)
+
+Show a User GET http://localhost:6000/todos/:id (which is the id of the user you are getting)
+
