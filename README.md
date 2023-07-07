@@ -30,5 +30,26 @@ MONGO_URI=mongodb+srv://joecruz17:passowrd@cluster0.5sgieqg.mongodb.net/project2
 
 Save everything and type npm run dev, in your vs code terminal
 
+POSTMAN
+
+Now once you are set up you can login into Postman
 
 
+Go to the Body Tag, click on the drop down hit raw, hit on the drop down that appears and click JSON. 
+Enter your information in this format
+
+{
+    "name": "sample",
+    "email": "sample",
+    "password": "sample"
+}
+
+
+Create a User POST http://localhost:6000/users/
+
+
+
+login 'POST' http://localhost:6000/users/login
+
+
+Create a Todo'POST' http://localhost:6000/todos
