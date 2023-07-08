@@ -2,7 +2,7 @@ Hello All ! Welcome to my To-DO list API
 Trello - https://trello.com/b/GY3KsVUn/api-project-2
 
 
-GETTING STARTED
+<h1>GETTING STARTED</h1>
 
 In order to start you can go to my github repository where you can basically clone the entire code onto your machine. 
 
@@ -30,7 +30,7 @@ MONGO_URI=mongodb+srv://joecruz17:passowrd@cluster0.5sgieqg.mongodb.net/project2
 
 Save everything and type npm run dev, in your vs code terminal
 
-POSTMAN
+<h1>POSTMAN</h1>
 
 Now once you are set up you can login into Postman
 
@@ -54,16 +54,18 @@ Update a User PUT http://localhost:6000/users/:id (which is the id of the user y
 Delete a User DELETE http://localhost:6000/users/:id (which is the id of the user you are deleting)
 
 
-
-router.delete('/:id', userController.auth, todoCtrl.delete)
-router.put('/:id', userController.auth, todoCtrl.update)
-router.post('/', userController.auth, todoCtrl.create)
-router.get('/:id', userController.auth, todoCtrl.show)
+<h1>TODOS</h1>
 
 
 Get list of incomplete Todos GET http://localhost:6000/todos/incomplete
 
 Get list of complete Todos GET http://localhost:6000/todos/completed
+
+When making a todo use this structure 
+{
+    "title": "example",
+    "completed": false
+}
 
 Create a Todo'POST' http://localhost:6000/todos
 
