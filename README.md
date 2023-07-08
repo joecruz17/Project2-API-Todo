@@ -13,7 +13,7 @@ After going to this link, you will the name of the Repository "Project2-API-Todo
 
 Clik on that green code and click on SSH, and copy the link that pops up.
 
-Next Open your terminal, and change the current directory to where you want the clone with the cd command. ex: cd homework
+Next Open your terminal, and change the current directory or make a directory with the mkdir command, to where you want the clone with the cd command. ex: cd homework
 
 Type in "git clone" and paste the URL you copied.
 
