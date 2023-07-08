@@ -1,5 +1,6 @@
 Hello All ! Welcome to my To-DO list API
 Trello - https://trello.com/b/GY3KsVUn/api-project-2
+Wireframe - https://imgur.com/a/85tpJjz
 
 
 <h1>GETTING STARTED</h1>
@@ -26,7 +27,7 @@ Now open vs code by using the code . command
 
 Go to you .env file and make sure you have your MONGO_URI from your mongodb account
 It should look like this
-MONGO_URI=mongodb+srv://joecruz17:passowrd@cluster0.5sgieqg.mongodb.net/project2?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://joecruz17:<passwordd>@cluster0.5.mongodb.net/project2?retryWrites=true&w=majority
 
 Save everything and type npm run dev, in your vs code terminal
 
@@ -47,7 +48,10 @@ Enter your information in this format
 
 Create a User POST http://localhost:6000/users/
 
+After creating the user, you want to use the Authorization token created on the bottom, and click on the Auth tab, click on the dropdown and choose Bearer Token and paste the Auth Token in the space on the right. 
+
 login User 'POST' http://localhost:6000/users/login
+
 
 Update a User PUT http://localhost:6000/users/:id (which is the id of the user you are updating)
 
