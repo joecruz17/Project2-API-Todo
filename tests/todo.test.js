@@ -31,51 +31,51 @@ describe('Test the users endpoints', () => {
      
     
     expect(response.statusCode).toBe(200)
-    // expect(response.body.title).toEqual('John Doe')
-    // expect(response.body.completed).toEqual('john.doe@example.com')
-    // expect(response.body).toHaveProperty('token')
+    expect(response.body.title).toEqual('John Doe')
+    expect(response.body.completed).toEqual('john.doe@example.com')
+    expect(response.body).toHaveProperty('token')
   })
 
 
-//   test('It should login a user', async () => {
-//     const user = new User({ title: 'chores', completed: false, password: 'password123' })
-//     await user.save()
+  test('It should login a user', async () => {
+    const user = new User({ title: 'chores', completed: false, password: 'password123' })
+    await user.save()
 
-//     const response = await request(app)
-//       .post('/users/login')
-//       .send({ email: 'john.doe@example.com', password: 'password123' })
+    const response = await request(app)
+      .post('/users/login')
+      .send({ email: 'john.doe@example.com', password: 'password123' })
     
-//     expect(response.statusCode).toBe(200)
-//     expect(response.body.user.name).toEqual('John Doe')
-//     expect(response.body.user.email).toEqual('john.doe@example.com')
-//     expect(response.body).toHaveProperty('token')
-//   })
+    expect(response.statusCode).toBe(200)
+    expect(response.body.user.name).toEqual('John Doe')
+    expect(response.body.user.email).toEqual('john.doe@example.com')
+    expect(response.body).toHaveProperty('token')
+  })
 
-//   test('It should update a todo', async () => {
-//     const todo = new Todo({ title: 'chores', completed: false})
-//     await user.save()
-//     const token = await user.generateAuthToken()
+  test('It should update a todo', async () => {
+    const todo = new Todo({ title: 'chores', completed: false})
+    await user.save()
+    const token = await user.generateAuthToken()
 
-//     const response = await request(app)
-//       .put(`/users/${user._id}`)
-//       .set('Authorization', `Bearer ${token}`)
-//       .send({ title: 'chores', completed: false })
+    const response = await request(app)
+      .put(`/users/${user._id}`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({ title: 'chores', completed: false })
     
-//     expect(response.statusCode).toBe(200)
-//     expect(response.body.title).toEqual('Jane Doe')
-//     expect(response.body.completed).toEqual(false)
-//   })
+    expect(response.statusCode).toBe(200)
+    expect(response.body.title).toEqual('Jane Doe')
+    expect(response.body.completed).toEqual(false)
+  })
 
-//   test('It should delete a todo', async () => {
-//     const todo = new Todo({ title: 'chores', completed: false})
-//     await user.save()
-//     const token = await user.generateAuthToken()
+  test('It should delete a todo', async () => {
+    const todo = new Todo({ title: 'chores', completed: false})
+    await user.save()
+    const token = await user.generateAuthToken()
 
-//     const response = await request(app)
-//       .delete(`/users/${user._id}`)
-//       .set('Authorization', `Bearer ${token}`)
+    const response = await request(app)
+      .delete(`/users/${user._id}`)
+      .set('Authorization', `Bearer ${token}`)
     
-//     expect(response.statusCode).toBe(200)
-//     expect(response.body.message).toEqual('Todo deleted')
-//   })
+    expect(response.statusCode).toBe(200)
+    expect(response.body.message).toEqual('Todo deleted')
+  })
 })
