@@ -79,3 +79,9 @@ Update a Todo PUT http://localhost:6000/todos/:id (which is the id of the user y
 
 Show a User GET http://localhost:6000/todos/:id (which is the id of the user you are getting)
 
+
+<h1>TESTS</h1>
+
+In order for you to run your tests, you need to have jest and supertest installed. Update your package.json and run in the terminal npm run test.
+
+
