@@ -29,7 +29,7 @@ Once that is done, create an env file in your terminal using the touch command e
 
 Now open vs code by using the code . command
 
-Go to you .env file and make sure you have your MONGO_URI from your mongodb account
+Go to your .env file and make sure you have your MONGO_URI from your mongodb account
 It should look like this
 MONGO_URI=mongodb+srv://joecruz17:<passwordd>@cluster0.5.mongodb.net/project2?retryWrites=true&w=majority
 
