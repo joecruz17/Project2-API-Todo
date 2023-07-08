@@ -2,6 +2,10 @@ Hello All ! Welcome to my To-DO list API
 Trello - https://trello.com/b/GY3KsVUn/api-project-2
 Wireframe - https://imgur.com/a/85tpJjz
 
+<h1>PRE REQS</h1> 
+node.js
+Postman
+Nodemon
 
 <h1>GETTING STARTED</h1>
 
